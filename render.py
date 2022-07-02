@@ -49,6 +49,11 @@ ORCID_id = input('enter ORCID id:')'''
 # Publons_id = "ABG-4510-2021"
 # ORCID_id = "0000-0003-2678-8281"
 
+# Google_Scholar_id="UVoq7p0AAAAJ"
+# Linkedin_id="mohammad-reza-reshadinezhad-28901553"
+# Publons_id = "2596772"
+# ORCID_id = "0000-0003-4859-9879"
+
 def update_paper(old_paper, new_paper):
     if old_paper.author.lower() != new_paper.author.lower() and new_paper.author != "None":
         if old_paper.author != "None":

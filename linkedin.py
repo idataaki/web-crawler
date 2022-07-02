@@ -23,21 +23,29 @@ def get_json(id):
     return json, contact_info_json
 
 def linkedin_user(json, c_json):
-    fn = json['firstName']
-    ln = json['lastName']
-    headline = json['headline']
-    address = json['address']
-    email = c_json['email_address']
-    website = c_json['websites'][0]['url']
-    phone = c_json['phone_numbers'][0]['number']
+    fn, ln, headline, address, email, website, phone = None, None, None, None, None, None, None
+    try:
+        fn = json['firstName']
+        ln = json['lastName']
+        headline = json['headline']
+        address = json['address']
+        email = c_json['email_address']
+        website = c_json['websites'][0]['url']
+        phone = c_json['phone_numbers'][0]['number']
+    except:
+        print()
     return (fn, ln, headline, address, email, website, phone)
 
 def linkedin_experience(json):
     lst =[]
     for exp in json['experience']:
-        co = exp['companyName']
-        ti = exp['title']
-        start = exp['timePeriod']['startDate']['year']
+        ti, co, start = None, None, None
+        try:
+            co = exp['companyName']
+            ti = exp['title']
+            start = exp['timePeriod']['startDate']['year']
+        except:
+            print()
         lst.append(experience(ti, co, start))
     return lst
 
@@ -50,8 +58,12 @@ def linkedin_skills(json):
 def linkedin_education(json):
     lst = []
     for edu in json['education']:
-        deg = edu['degreeName']
-        sch = edu['schoolName']
-        field = edu['fieldOfStudy']
+        deg, sch, field = None, None, None
+        try:
+            deg = edu['degreeName']
+            sch = edu['schoolName']
+            field = edu['fieldOfStudy']
+        except:
+            print()
         lst.append(education(deg, sch, field))
     return lst
